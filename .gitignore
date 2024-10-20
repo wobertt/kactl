@@ -5,3 +5,6 @@
 a.out
 header.tmp
 .vscode
+kactl.fls
+kactl.fdb_latexmk
+content/contest/hash.sh
