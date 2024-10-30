@@ -4,6 +4,7 @@
  * Description: Given arrays $a$, $b$ where $b$ is concave,
  *   return the array $c_k = \max_{i+j=k}(a_i + b_j)$ of size equal to $a$.
  *   A zero is implicitly inserted at the start of $b$.
+ * Source: http://serjudging.vanb.org/?p=2081
  * Time: O(N \log N)
  * Status: Tested on https://codeforces.com/problemset/problem/808/E, https://open.kattis.com/problems/balatro/
  */
