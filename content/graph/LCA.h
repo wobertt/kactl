@@ -4,7 +4,7 @@
  * License: CC0
  * Source: Folklore
  * Description: Data structure for computing lowest common ancestors in a tree
- * (with 0 as root). C should be an adjacency list of the tree, either directed
+ * (with `rt` as root). C should be an adjacency list of the tree, either directed
  * or undirected.
  * Time: $O(N \log N + Q)$
  * Status: stress-tested
@@ -18,7 +18,7 @@ struct LCA {
 	vi time, path, ret;
 	RMQ<int> rmq;
 
-	LCA(vector<vi>& C) : time(sz(C)), rmq((dfs(C,0,-1), ret)) {}
+	LCA(vector<vi>& C, int rt) : time(sz(C)), rmq((dfs(C,rt,-1), ret)) {}
 	void dfs(vector<vi>& C, int v, int par) {
 		time[v] = T++;
 		for (int y : C[v]) if (y != par) {
