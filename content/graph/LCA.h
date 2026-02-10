@@ -4,7 +4,7 @@
  * License: CC0
  * Source: Folklore
  * Description: Data structure for computing lowest common ancestors in a tree
- * (with `rt` as root). C should be an adjacency list of the tree, either directed
+ * (with `rt' as root). C should be an adjacency list of the tree, either directed
  * or undirected.
  * Time: $O(N \log N + Q)$
  * Status: stress-tested
