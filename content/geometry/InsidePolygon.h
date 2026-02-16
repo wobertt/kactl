@@ -18,7 +18,7 @@
 #include "OnSegment.h"
 #include "SegmentDistance.h"
 
-template<class P>
+template<class P> // works for both ccw and cw polygons.
 bool inPolygon(vector<P> &p, P a, bool strict = true) {
 	int cnt = 0, n = sz(p);
 	rep(i,0,n) {

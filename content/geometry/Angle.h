@@ -7,7 +7,7 @@
  *  a number of rotations around the origin). Useful for rotational sweeping.
  *  Sometimes also represents points or vectors.
  * Usage:
- *  vector<Angle> v = {w[0], w[0].t360() ...}; // sorted
+ *  vector<Angle> v = {w[0], w[0].t360() ...}; sort(all(v));
  *  int j = 0; rep(i,0,n) { while (v[j] < v[i].t180()) ++j; }
  *  // sweeps j such that (j-i) represents the number of positively oriented triangles with vertices at 0 and i
  * Status: Used, works well
@@ -19,15 +19,15 @@ struct Angle {
 	int t;
 	Angle(int x, int y, int t=0) : x(x), y(y), t(t) {}
 	Angle operator-(Angle b) const { return {x-b.x, y-b.y, t}; }
-	int half() const {
-		assert(x || y);
+	int half() const { // true if angle is in [pi, 2pi).
+		assert(x || y);  // can change to whatever should be the "bigger half"
 		return y < 0 || (y == 0 && x < 0);
 	}
 	Angle t90() const { return {-y, x, t + (half() && x >= 0)}; }
 	Angle t180() const { return {-x, -y, t + half()}; }
 	Angle t360() const { return {x, y, t + 1}; }
 };
-bool operator<(Angle a, Angle b) {
+bool operator<(Angle a, Angle b) { // compare angles in [0, 2pi)
 	// add a.dist2() and b.dist2() to also compare distances
 	return make_tuple(a.t, a.half(), a.y * (ll)b.x) <
 	       make_tuple(b.t, b.half(), a.x * (ll)b.y);

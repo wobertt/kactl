@@ -1,11 +1,9 @@
 \appendix
-\chapter{Test session}
+\section{Test session}
 
-\section{To test during test session}
+\subsection{To test during test session}
 \begin{itemize}
-	\item Keyboard layouts
 	\item bashrc
-	\item vimrc
 	\item template.cpp
 	\item Java
 	\item Python
@@ -39,4 +37,9 @@
 		\end{itemize}
 	\item Listing all available binaries\\
 		\texttt{echo \$PATH | tr ':' ' ' | xargs ls | grep -v / | sort | uniq | tr '\char`\\n' ' ' > path.txt}
+	\item Custom:
+		\begin{itemize}
+			\item Address sanitizers (run \texttt{ulimit -s 16000000} and add \texttt{-g}?)
+			\item File hashing
+		\end{itemize}
 \end{itemize}

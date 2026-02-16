@@ -1,30 +1,30 @@
 /**
- * Author: Lukas Polacek
- * Date: 2009-09-28
- * License: CC0
- * Source: folklore
- * Description: Operators for modular arithmetic. You need to set {\tt mod} to
- * some number first and then you can use the structure.
+ * Author: Benjamin Qi
+ * Source: https://github.com/bqi343/cp-notebook/blob/master/Implementations/content/number-theory%20(11.1)/Modular%20Arithmetic/ModIntShort.h
+ * Description: Modular arithmetic. Assumes $MOD$ is prime.
+ * Usage: mi a = MOD+5; inv(a); // 400000003
  */
 #pragma once
 
-#include "euclid.h"
-
-const ll mod = 17; // change to something else
-struct Mod {
-	ll x;
-	Mod(ll xx) : x(xx) {}
-	Mod operator+(Mod b) { return Mod((x + b.x) % mod); }
-	Mod operator-(Mod b) { return Mod((x - b.x + mod) % mod); }
-	Mod operator*(Mod b) { return Mod((x * b.x) % mod); }
-	Mod operator/(Mod b) { return *this * invert(b); }
-	Mod invert(Mod a) {
-		ll x, y, g = euclid(a.x, mod, x, y);
-		assert(g == 1); return Mod((x + mod) % mod);
-	}
-	Mod operator^(ll e) {
-		if (!e) return Mod(1);
-		Mod r = *this ^ (e / 2); r = r * r;
-		return e&1 ? *this * r : r;
-	}
+template<int M> struct mint {
+    static const int mod = M;
+    int v;
+    explicit operator int() const { return v; }
+    mint():v(0) {}
+    mint(ll _v):v((int)(_v%M)) { v += (v<0)*M; }
+    mint& operator+=(mint o) {
+        if ((v += o.v) >= M) v -= M;
+        return *this; }
+    mint& operator-=(mint o) {
+        if ((v -= o.v) < 0) v += M;
+        return *this; }
+    mint& operator*=(mint o) {
+        v = (int)((ll)v*o.v%M); return *this; }
+    friend mint pow(mint a, ll p) { assert(p >= 0);
+        return p==0?1:pow(a*a,p/2)*(p&1?a:1); }
+    friend mint inv(mint a) { assert(a.v != 0); return pow(a,M-2); }
+    friend mint operator+(mint a, mint b) { return a += b; }
+    friend mint operator-(mint a, mint b) { return a -= b; }
+    friend mint operator*(mint a, mint b) { return a *= b; }
 };
+using mi = mint<0>; // change to something else
