@@ -19,6 +19,7 @@ const ll mod = 5; /** exclude-line */
 typedef vector<ll> Poly;
 ll linearRec(Poly S, Poly tr, ll k) {
 	int n = sz(tr);
+	if (n == 0) return S[0];
 
 	auto combine = [&](Poly a, Poly b) {
 		Poly res(n * 2 + 1);
