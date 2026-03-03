@@ -35,7 +35,7 @@ Val *parseExpression(string &s) {
     auto clear = [&](C minp) {
         while (!ops.empty()) {
             auto [p, c] = ops.back();
-            if (p < minp) break; // <= for right assoc.
+            if (p < minp) break;
             ops.pop_back();
             auto b = vals.back(); vals.pop_back();
             if (c == '_') {  // unary op
