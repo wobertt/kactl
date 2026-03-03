@@ -2,18 +2,20 @@
  * Author: Johan Sannemo, Simon Lindholm
  * Date: 2016-12-15
  * License: CC0
- * Description: Finds a minimum vertex cover in a bipartite graph.
+ * Description: Finds a minimum vertex cover in a bipartite graph (A, B)
+ *  with |A| = n, |B| = m. g should be a list of neighbors of the left
+ *  partition.
  *  The size is the same as the size of a maximum matching, and
  *  the complement is a maximum independent set.
  * Status: stress-tested
  */
 #pragma once
 
-#include "DFSMatching.h"
+#include "HopcroftKarp.h"
 
 vi cover(vector<vi>& g, int n, int m) {
 	vi match(m, -1);
-	int res = dfsMatching(g, match);
+	int res = hopcroftKarp(g, match);
 	vector<bool> lfound(n, true), seen(m);
 	for (int it : match) if (it != -1) lfound[it] = false;
 	vi q, cover;
