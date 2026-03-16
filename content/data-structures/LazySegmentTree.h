@@ -6,15 +6,15 @@
  */
 #pragma once
 
+typedef ll T; T idT = {}; // node type
+typedef ll U; U idU = {}; // update type
+// combine segtree nodes a and b
+T f(T a, T b) { return a + b; }
+// apply updates f and g (f compose g)
+U g(U f, U g) { return f + g; }
+// apply update f to segtree node a
+T h(U f, T a) { return a + f; }
 struct lztree {
-	typedef ll T; T idT = {}; // node type
-	typedef ll U; U idU = {}; // update type
-	// combining segtree nodes a and b
-	T f(T a, T b) { return a + b; }
-	// applying updates f and g (f compose g)
-	U g(U f, U g) { return f + g; }
-	// applying update f to segtree node a
-	T h(U f, T a) { return a + f; }
 	int n;
 	vector<T> t;
 	vector<U> d;
