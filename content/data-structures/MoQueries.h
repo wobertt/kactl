@@ -28,7 +28,7 @@ vi mo(vector<pii> Q) {
         while (R > y) del(--R, 1);
         res[qi] = calc();
     }
-	return res; // NOTE: Q must have inclusive-exclusive intervals.
+	return res; // Q must use [L, R) (incl-excl) intervals.
 }
 
 vi moTree(vector<array<int, 2>> Q, vector<vi>& ed, int root=0){
