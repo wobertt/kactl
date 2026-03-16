@@ -22,7 +22,7 @@ template <bool VALS_EDGES> struct HLD {
     lztree tree;
     HLD(vector<vi> &adj, vector<T> v, int root)
         : N(sz(adj)), adj(adj), par(N, -1), siz(N, 1),
-          rt(N),pos(N),tree(N) {
+          rt(N,root),pos(N),tree(N) {
         dfsSz(root); dfsHld(root);
         rep(i,root,sz(v)) tree.set(pos[i], v[i]); // init vals
     }
