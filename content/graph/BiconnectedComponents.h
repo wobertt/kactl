@@ -9,7 +9,7 @@
  *  exists through them). Note that a node can be in several components. An
  *  edge which is not in a component is a bridge, i.e., not part of any cycle.
  * Usage:
- *  int eid = 0; ed.resize(N); rep(i,0,N) ed[i].clear();
+ *  int eid = 0; ed.resize(N); for (auto \&x: ed) x.clear();
  *  for each edge (a,b) {
  *    ed[a].emplace_back(b, eid);
  *    ed[b].emplace_back(a, eid++); }
