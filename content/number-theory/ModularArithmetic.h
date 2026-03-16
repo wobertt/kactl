@@ -28,7 +28,7 @@ template<int M> struct mint {
     friend mint operator-(mint a, mint b) { return a -= b; }
     friend mint operator*(mint a, mint b) { return a *= b; }
     friend istream& operator>>(istream& is, mint& a) { // &
-        return is >> a.v; }
+        return is >> a.v; } // only for [0, mod)
     friend ostream& operator<<(ostream& os, mint a) { // no &
         return os << a.v; }
 };
