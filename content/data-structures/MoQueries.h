@@ -32,9 +32,9 @@ vi mo(vector<pii> Q) {
 }
 
 vi moTree(vector<array<int, 2>> Q, vector<vi>& ed, int root=0){
-	int N = sz(ed), pos[2] = {}, blk = 350; // ~N/sqrt(Q)
+	int N = sz(ed), pos[2] = {root, root}, blk = 126; // ~N/sqrt(Q)
 	vi s(sz(Q)), res = s, I(N), L(N), R(N), in(N), par(N);
-	add(0, 0), in[0] = 1;
+	add(root, 0), in[root] = 1;
 	auto dfs = [&](int x, int p, int dep, auto& f) -> void {
 		par[x] = p;
 		L[x] = N;
@@ -56,6 +56,5 @@ vi moTree(vector<array<int, 2>> Q, vector<vi>& ed, int root=0){
 		while (a != b) step(par[a]);
 		while (i--) step(I[i]);
 		if (end) res[qi] = calc();
-	}
-	return res;
+	return res; // Q must use [L, R] (incl-incl) intervals.
 }
