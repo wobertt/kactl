@@ -3,8 +3,7 @@
  * Date: 2019-12-28
  * License: CC0
  * Source: https://github.com/hoke-t/tamu-kactl/blob/master/content/data-structures/MoQueries.h
- * Description: Answer interval or tree path queries by finding an approximate TSP through the queries,
- * and moving from one query to the next by adding/removing points at the ends.
+ * Description: Answer interval or tree path queries by moving from one query to the next by adding/removing points at the ends.
  * If values are on tree edges, change \texttt{step} to add/remove the edge $(a, c)$ and remove the initial \texttt{add} call (but keep \texttt{in}).
  * Time: O(N \sqrt Q)
  * Status: stress-tested
@@ -16,7 +15,7 @@ void del(int ind, int end) { ... } // remove a[ind]
 int calc() { ... } // compute current answer
 
 vi mo(vector<pii> Q) {
-	int L = 0, R = 0, blk = 350; // ~N/sqrt(Q)
+	int L = 1, R = 1, blk = 350; // ~N/sqrt(Q)
 	vi s(sz(Q)), res = s;
 #define K(x) pii(x.first/blk, x.second ^ -(x.first/blk & 1))
 	iota(all(s), 0);
@@ -30,6 +29,7 @@ vi mo(vector<pii> Q) {
 		res[qi] = calc();
 	}
 	return res;
+	return res; // NOTE: Q must have inclusive-exclusive intervals.
 }
 
 vi moTree(vector<array<int, 2>> Q, vector<vi>& ed, int root=0){
