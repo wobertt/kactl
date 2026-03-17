@@ -10,6 +10,7 @@
 #pragma once
 
 struct ART {
+  // default constructor must give identity elmt
   int ans = 0; // max distance to another node
   ART operator+(const ART& o) const {
     return {max(ans, o.ans)};
@@ -19,6 +20,7 @@ struct ART {
     return {ans+1}; // x = node idx, e = edge idx
   }
 };
+ART base{}; // value of a single node, not always id
 template<class T>
 struct AllRoots {
   int n; vector<vector<pii>> adj;
@@ -28,7 +30,7 @@ struct AllRoots {
       adj[a].pb({b,ei});
       adj[b].pb({a, ei});
     }
-    for (auto &s : suf) s.resize(1);
+    for (auto &s : suf) s.pb(base); // initial value of node
   }
   T down(int x, int p = -1) {
     for (auto &c : adj[x])
