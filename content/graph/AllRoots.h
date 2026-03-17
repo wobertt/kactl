@@ -1,11 +1,11 @@
 /**
  * Author: Shashank Bhatt
  * License: CC0
- * Description: Reroot DP assuming associativity and commutativity of +.
+ * Description: 0-indexed reroot DP assuming associativity and commutativity of +.
  * operator+ combines children into a single representation.
  * promote() finds a child's contribution to its parent.
  * Time: O(N).
- * Status: Tested on kattis:joiningnetwork and cses:1133
+ * Status: Tested on https://cses.fi/problemset/result/16593762/ and https://cses.fi/problemset/result/16593328/.
  */
 #pragma once
 
