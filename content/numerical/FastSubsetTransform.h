@@ -39,8 +39,8 @@ void point_add(vi &a, int i, int val) {
 int point_eval(const vi &a, int i) {
     int res = 0;
     rep(j,0,sz(a))
-        // res += a[j] * ((i&j) == 0) * psgn(sz(a) - 1 - (i|j)); // AND /// include-line
-        // res += a[j] * ((i|j)==sz(a)-1) * psgn(i&j); // OR /// include-line
+        // res += a[j] * ((i&j) == 0) * psgn(sz(a)-1-(i|j)); // AND /// include-line
+        // res += a[j] * ((i|j) == sz(a)-1) * psgn(i&j); // OR /// include-line
         res += a[j] * psgn(i&j); // XOR
     res /= sz(a); // XOR
     return res;
