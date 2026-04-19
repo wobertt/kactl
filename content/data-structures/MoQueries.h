@@ -31,7 +31,7 @@ vi mo(vector<pii> Q) {
 	return res; // Q must use [L, R) (incl-excl) intervals.
 }
 
-vi moTree(vector<array<int, 2>> Q, vector<vi>& ed, int root=0){
+vi moTree(vector<array<int, 2>> Q, vector<vi>& ed, int root=0) {
 	int N = sz(ed), pos[2] = {root, root}, blk = 126; // ~N/sqrt(Q)
 	vi s(sz(Q)), res = s, I(N), L(N), R(N), in(N), par(N);
 	add(root, 0), in[root] = 1;
@@ -56,5 +56,6 @@ vi moTree(vector<array<int, 2>> Q, vector<vi>& ed, int root=0){
 		while (a != b) step(par[a]);
 		while (i--) step(I[i]);
 		if (end) res[qi] = calc();
+	}
 	return res; // Q must use [L, R] (incl-incl) intervals.
 }
